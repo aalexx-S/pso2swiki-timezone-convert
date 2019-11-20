@@ -17,11 +17,13 @@ for (let i = 0, col; col = tHead.rows[1].cells[i]; i++) {
 	nc.classList.add("style_td");
 	nc.style.textAlign = 'center';
 	if (i == 0) {
-		nc.innerHTML = "UTC" + (coff<0?"":"+") + coff;
+		nc.innerHTML = "UTC" + (-coff<0?"":"+") + -coff;
+		nc.style.whiteSpace = 'nowrap';
 	} else if (i < tHead.rows[1].cells.length - 1) {
 		let t = parseInt(col.innerText.substring(0, col.innerText.length - 1));
 		nc.innerHTML = (t + off + 24) % 24 + col.innerText[col.innerText.length - 1];
 	} else { // the final cell, do nothing for now
-		nc.innerHTML = '<span class="wikicolor" style="color:Yellow">Current</span> <br class="spacer">' + date.toLocaleTimeString({hour12: false});
+		nc.innerHTML = '<span class="wikicolor" style="color:Yellow">Current</span> <br class="spacer">' +
+			date.toLocaleTimeString([], {hour12: false});
 	}
 }
