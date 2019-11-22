@@ -22,8 +22,12 @@ for (let i = 0, col; col = tHead.rows[1].cells[i]; i++) {
 	} else if (i < tHead.rows[1].cells.length - 1) {
 		let t = parseInt(col.innerText.substring(0, col.innerText.length - 1));
 		nc.innerHTML = (t + off + 24) % 24 + col.innerText[col.innerText.length - 1];
-	} else { // the final cell, do nothing for now
-		nc.innerHTML = '<span class="wikicolor" style="color:Yellow">Current</span> <br class="spacer">' +
-			date.toLocaleTimeString([], {hour12: false});
+	} else { // the final cell, show current japan time
+		let utc = date.getTime() + (date.getTimezoneOffset() * 60000);
+		let jp = new Date(utc + (3600000 * 9));
+		let mm = jp.getMonth() + 1;
+		let dd = jp.getDate();
+		nc.innerHTML = '<span class="wikicolor" style="color:Yellow">JP time:</span> <br class="spacer">' +
+			mm + '/' + dd + ' ' + jp.toLocaleTimeString('ja-JP', {hour12: false, hour: '2-digit', minute:'2-digit'});
 	}
 }
