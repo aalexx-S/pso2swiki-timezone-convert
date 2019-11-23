@@ -27,7 +27,24 @@ for (let i = 0, col; col = tHead.rows[1].cells[i]; i++) {
 		let jp = new Date(utc + (3600000 * 9));
 		let mm = jp.getMonth() + 1;
 		let dd = jp.getDate();
-		nc.innerHTML = '<span class="wikicolor" style="color:Yellow">JP time:</span> <br class="spacer">' +
-			mm + '/' + dd + ' ' + jp.toLocaleTimeString('ja-JP', {hour12: false, hour: '2-digit', minute:'2-digit'});
+		let cur_jp_time_str = document.createElement('span');
+		cur_jp_time_str.id = 'jp_time_str';
+		cur_jp_time_str.innerHTML = mm + '/' + dd + ' ' + jp.toLocaleTimeString('ja-JP', {hour12: false, hour: '2-digit', minute:'2-digit'});
+		nc.innerHTML = '<span class="wikicolor" style="color:Yellow">JP time: </span>'
+			+ '<button id="updateJpTime_btn">Refresh</button><br class="spacer">';
+		nc.appendChild(cur_jp_time_str);
 	}
 }
+
+// Update current Japan time
+// Onclick
+function updateJpTime() {
+	let date = new Date();
+	let utc = date.getTime() + (date.getTimezoneOffset() * 60000);
+	let jp = new Date(utc + (3600000 * 9));
+	document.getElementById('jp_time_str').innerHTML = (jp.getMonth() + 1) + '/' + jp.getDate() + ' '
+		+ jp.toLocaleTimeString('ja-JP', {hour12: false, hour: '2-digit', minute:'2-digit'});
+}
+
+// add event listener for refresh time button
+document.getElementById('updateJpTime_btn').addEventListener('click', updateJpTime);
