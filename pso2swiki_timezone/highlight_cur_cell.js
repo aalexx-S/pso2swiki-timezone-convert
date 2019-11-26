@@ -17,8 +17,7 @@ function highlight_cur_cell(dd, hh) {
 			break;
 
 	// get correct column with jp hour (hh)
-	// use the last row in tHead instead of the second row
-	// I may skip adding the first row in future release
+	// use the last row in tHead instead of the second row since there may only be one row
 	let cid = 1;
 	let jp_row = target_table.tHead.rows[target_table.tHead.rows.length - 1];
 	for (let c; c = jp_row.cells[cid]; cid++)
