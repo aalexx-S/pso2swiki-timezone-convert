@@ -4,6 +4,7 @@
   "name": "Pso2 Swiki Extra Timezone",
   "version": "0.9.0",
   "description": "Add extra row for different timezone in pso2 swiki.",
+  "icons": {"256": "icon.png"},
 
   "content_scripts": [{
     "js": ["highlight_cur_cell.js", "update_jp_time.js", "content.js"],
