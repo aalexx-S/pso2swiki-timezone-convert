@@ -6,7 +6,8 @@
   "description": "Add extra row for different timezone in pso2 swiki.",
 
   "content_scripts": [{
-    "js": ["content.js"],
+    "js": ["highlight_cur_cell.js", "update_jp_time.js", "content.js"],
+	"css":["style.css"],
     "matches": ["https://pso2.swiki.jp/", "https://pso2m.swiki.jp/"]
   }]
 
