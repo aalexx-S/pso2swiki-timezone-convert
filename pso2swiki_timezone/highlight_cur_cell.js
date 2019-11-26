@@ -12,7 +12,7 @@ function highlight_cur_cell(dd, hh) {
 
 	// get correct row with date (dd)
 	let rid = 0;
-	for (; c = target_table.rows[rid]; rid++)
+	for (let c; c = target_table.rows[rid]; rid++)
 		if (parseInt(c.cells[0].innerText, 10) == dd)
 			break;
 	if (rid >= target_table.rows.length)
@@ -30,8 +30,8 @@ function highlight_cur_cell(dd, hh) {
 	// highligh current cell
 	// check colspan because casino event
 	let cur_i = 0;
-	let ind;
-	for (ind = 1, c; c = target_table.rows[rid].cells[ind]; ind++) {
+	let ind = 1;
+	for (let c; c = target_table.rows[rid].cells[ind]; ind++) {
 		cur_i += c.colSpan;
 		if (cur_i >= cid) {
 			c.classList.add('cur_highlight_cell');
