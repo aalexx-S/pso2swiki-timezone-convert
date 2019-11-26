@@ -25,7 +25,7 @@ if (off == 0 || off == 24) {
 			nc.innerHTML = "UTC" + (-coff<0?"":"+") + -coff;
 			nc.style.whiteSpace = 'nowrap';
 		} else if (i < tHead.rows[1].cells.length - 1) {
-			let t = parseInt(col.innerText.substring(0, col.innerText.length - 1));
+			let t = parseInt(col.innerText, 10);
 			nc.innerHTML = (t + off + 24) % 24 + col.innerText[col.innerText.length - 1];
 		} else { // the final cell, show current japan time
 			// insert string with id for later modification

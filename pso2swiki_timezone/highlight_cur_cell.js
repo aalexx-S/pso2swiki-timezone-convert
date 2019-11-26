@@ -13,7 +13,7 @@ function highlight_cur_cell(dd, hh) {
 	// get correct row with date (dd)
 	let rid = 0;
 	for (; c = target_table.rows[rid]; rid++)
-		if (c.cells[0].innerText.substring(0, c.cells[0].innerText.length - 1).startsWith(dd))
+		if (parseInt(c.cells[0].innerText, 10) == dd)
 			break;
 	if (rid >= target_table.rows.length)
 		return; // not match date found
